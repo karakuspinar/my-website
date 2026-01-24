@@ -1,0 +1,220 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* ÜST MENÜ */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background-color: #ffffff;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.header a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #333;
+}
+
+/* TANITIM */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #1f2933;
+  color: white;
+}
+
+.hero button {
+  padding: 12px 30px;
+  border: none;
+  background-color: #d22e09;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ÜRÜNLER */
+.products {
+  padding: 60px;
+  background: var(--bg);
+}
+
+.product-list {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.product-card {
+  background-color: #f9f9f9;
+  padding: 20px;
+  text-align: center;
+  width: 200px;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #1f2933;
+  color: white;
+}[11:02, 24.01.2026] aksesuar: <header class="topbar">
+  <div class="logo">Noturforca</div>
+  <nav>
+    <a href="#">Ana Sayfa</a>
+    <a href="#">Notlar</a>
+    <a href="#">Hakkında</a>
+  </nav>
+</header>
+[11:03, 24.01.2026] aksesuar: body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  background: #f7f7f5;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 40px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.topbar .logo {color: var(--red);
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.topbar nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #555;
+  font-size: 14px;
+}
+
+.topbar nav a:hover {
+  color: #000;
+}.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {border-left: 4px solid var(--red);
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  border: 1px solid #e5e5e5;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+}
+
+.card h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.card p {
+  font-size: 14px;
+  color: #666;
+}:root {
+  --red: #1f7a3f;
+  --light-red: #38b000;
+  --bg: #f6f8f6;
+}.logo img {
+  height: 50px;   /* burayı büyütüp küçültebilirsin */
+  width: auto;
+}.product-card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.product-card h3 {
+  margin: 15px 0 5px;
+  font-size: 16px;
+}
+
+.product-card .price {
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: 15px;
+}
+
+.product-card button {
+  background: var(--green);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+.product-card button:hover {
+  background: #155c2f;
+}@media (max-width: 768px) {
+
+  .topbar {
+    padding: 12px 20px;
+  }
+
+  .topbar nav a {
+    margin-left: 12px;
+    font-size: 13px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .product-card {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+
+}.about {
+  background: white;
+  padding: 80px 20px;
+  margin-top: 60px;
+}
+
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.about h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.about p {
+  color: #555;
+  line-height: 1.8;
+  font-size: 15px;
+}
