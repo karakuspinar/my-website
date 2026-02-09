@@ -1,29 +1,65 @@
 [
   {
-    "id": "1",
-    "title": "Audi A3 Cam Rüzgarlığı",
+    "title": "Audi A3 Hb 2003-2013 Cam Rüzgarlığı",
     "category": "cam",
     "img": "cam.jpg",
     "price": 600,
     "brand": "Audi",
     "model": "A3",
-    "year": "2010"
+    "year": "2003-2013"
   },
   {
-    "id": "2",
-    "title": "BMW Difüzör",
-    "category": "difuzor",
-    "img": "difuzor.jpg",
+    "title": "Bmw E36 Cam Rüzgarlığı",
+    "category": "cam",
+    "img": "cam.jpg",
     "price": 450,
     "brand": "BMW",
     "model": "E36",
-    "year": "1998"
+    "year": "1990-2000"
   },
   {
-    "id": "3",
-    "title": "Koltuk Kılıfı",
-    "category": "koltuk",
-    "img": "koltuk.jpg",
-    "price": 500
+    "title": "Chevrolet Aveo Cam Rüzgarlığı",
+    "category": "cam",
+    "img": "cam.jpg",
+    "price": 600,
+    "brand": "Chevrolet",
+    "model": "Aveo",
+    "year": "2012"
+  },
+  {
+    "title": "Kolçak Üniversal",
+    "category": "kolcak",
+    "img": "kolcak.jpg",
+    "price": 350,
+    "brand": "Genel",
+    "model": "",
+    "year": ""
+  },
+  {
+    "title": "Krom Kapı Kolu",
+    "category": "krom",
+    "img": "krom.jpg",
+    "price": 250,
+    "brand": "Genel",
+    "model": "",
+    "year": ""
+  },
+  {
+    "title": "Paspas Seti",
+    "category": "paspas",
+    "img": "paspas.jpg",
+    "price": 300,
+    "brand": "Genel",
+    "model": "",
+    "year": ""
+  },
+  {
+    "title": "Tavan Çıtası",
+    "category": "tavan",
+    "img": "tavan.jpg",
+    "price": 400,
+    "brand": "Genel",
+    "model": "",
+    "year": ""
   }
 ]
