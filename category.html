@@ -250,7 +250,7 @@ function goProduct(p){
 
       grid.innerHTML = list.map(p => `
         <div class="card">
-          <img class="img" src="images/${p.img}" alt="${p.title}">
+         <img class="img" src="${(p.img || '').startsWith('http') ? p.img : 'images/' + p.img}" alt="${p.title}">
           <div class="info">
             <div class="title">${p.title}</div>
             <div class="meta">Kategori: ${p.category}</div>
@@ -319,4 +319,5 @@ function renderAuth(){
 renderAuth();
 </script>
 </body>
+
 </html>
