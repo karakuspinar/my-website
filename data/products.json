@@ -1,20 +1,8 @@
 [
-  {
-    "title": "Audi A3 Cam Rüzgarlığı",
-    "price": 600,
-    "img": "https://static.ticimax.cloud/12345/uploads/urunresimleri/audi-cam.jpg",
-    "category": "cam"
-  },
-  {
-    "title": "BMW Difüzör",
-    "price": 450,
-    "img": "https://static.ticimax.cloud/12345/uploads/urunresimleri/difuzor.jpg",
-    "category": "difuzor"
-  },
-  {
-    "title": "Koltuk Kılıfı",
-    "price": 500,
-    "img": "https://static.ticimax.cloud/12345/uploads/urunresimleri/koltuk.jpg",
-    "category": "koltuk"
-  }
+ {
+  "URUNADI": "Test Ürün",
+  "SATISFIYATI": 500,
+  "RESIM": "https://via.placeholder.com/400",
+  "Kategoriler": "cam"
+ }
 ]
