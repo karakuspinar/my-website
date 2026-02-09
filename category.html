@@ -9,61 +9,51 @@
 body{font-family:Arial;margin:0;background:#fff1f6}
 .wrap{max-width:1100px;margin:auto;padding:20px}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{background:#fff;border-radius:14px;overflow:hidden;border:1px solid #eee}
-.img{width:100%;height:190px;object-fit:cover;background:#eee}
-.info{padding:10px}
-.title{font-weight:900}
-.price{color:#ff2e88;font-weight:900;margin:5px 0}
-.btn{width:100%;padding:12px;background:#ff2e88;color:#fff;border:none;border-radius:10px;margin-top:6px}
+.card{background:#fff;border-radius:14px;padding:10px;border:1px solid #eee}
+.img{width:100%;height:180px;object-fit:cover;background:#eee}
+.btn{width:100%;padding:10px;background:#ff2e88;color:#fff;border:none;border-radius:10px;margin-top:6px}
 </style>
 </head>
 
 <body>
-
 <div class="wrap">
-<a href="index.html">← geri</a>
 <h2 id="title"></h2>
 <div id="grid" class="grid"></div>
 </div>
 
 <script>
+const params = new URLSearchParams(location.search);
+const catKey = (params.get("category")||"").toLowerCase();
+document.getElementById("title").textContent = catKey;
 
-const params=new URLSearchParams(location.search);
-const cat=params.get("category")||"";
-document.getElementById("title").textContent=cat;
-
-function imgFix(v){
- if(!v) return "images/cam.jpg";
- if(v.startsWith("http")) return v;
- return "images/"+v.replace("images/","").replace("resimler/","");
+function fixImg(v){
+  if(!v) return "images/cam.jpg";
+  if(v.startsWith("http")) return v;
+  return "images/" + v.replace("images/","").replace("resimler/","");
 }
 
-async function load(){
- const res=await fetch("products_with_images_only.json?"+Date.now());
- const data=await res.json();
-
- const list=data.filter(x=>String(x.category).toLowerCase()==cat.toLowerCase());
-
- document.getElementById("grid").innerHTML=list.map(p=>`
-   <div class="card">
-     <img class="img"
-          src="${imgFix(p.img)}"
-          onerror="this.src='images/cam.jpg'">
-
-     <div class="info">
-       <div class="title">${p.title}</div>
-       <div class="price">₺ ${p.price||0}</div>
-
-       <button class="btn"
-       onclick="location.href='urun.html?name=${encodeURIComponent(p.title)}&img=${encodeURIComponent(p.img)}&price=${p.price||0}'">
-       Ürünü Gör</button>
-     </div>
-   </div>
- `).join("");
+async function getProducts(){
+  const res = await fetch("products_with_images_only.json");
+  return await res.json();
 }
 
-load();
+async function render(){
+  const grid=document.getElementById("grid");
+  const products=await getProducts();
 
+  const list=products.filter(p=>String(p.category).toLowerCase()==catKey);
+
+  grid.innerHTML=list.map(p=>`
+    <div class="card">
+      <img class="img" src="${fixImg(p.img)}">
+      <div>${p.title}</div>
+      <div>₺ ${p.price}</div>
+      <button class="btn">Ürünü Gör</button>
+    </div>
+  `).join("");
+}
+
+render();
 </script>
 </body>
 </html>
