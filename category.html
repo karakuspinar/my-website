@@ -8,52 +8,53 @@
 <style>
 body{font-family:Arial;margin:0;background:#fff1f6}
 .wrap{max-width:1100px;margin:auto;padding:20px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{background:#fff;border-radius:14px;padding:10px;border:1px solid #eee}
-.img{width:100%;height:180px;object-fit:cover;background:#eee}
-.btn{width:100%;padding:10px;background:#ff2e88;color:#fff;border:none;border-radius:10px;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.card{background:#fff;border-radius:14px;overflow:hidden;padding:10px}
+.img{width:100%;height:180px;object-fit:cover}
+.btn{background:#ff2e88;color:#fff;border:none;padding:10px;width:100%;margin-top:8px}
 </style>
 </head>
 
 <body>
+
 <div class="wrap">
 <h2 id="title"></h2>
 <div id="grid" class="grid"></div>
 </div>
 
 <script>
-const params = new URLSearchParams(location.search);
-const catKey = (params.get("category")||"").toLowerCase();
-document.getElementById("title").textContent = catKey;
+const BASE = "/p-nar-oto-aksesuar";
 
-function fixImg(v){
-  if(!v) return "images/cam.jpg";
+function imgFix(v){
+  if(!v) return BASE+"/resimler/placeholder.jpg";
   if(v.startsWith("http")) return v;
-  return "images/" + v.replace("images/","").replace("resimler/","");
+  return BASE+"/resimler/"+v;
 }
 
-async function getProducts(){
-  const res = await fetch("products_with_images_only.json");
-  return await res.json();
-}
+const params = new URLSearchParams(location.search);
+const cat = params.get("category");
 
-async function render(){
-  const grid=document.getElementById("grid");
-  const products=await getProducts();
+document.getElementById("title").textContent = cat;
 
-  const list=products.filter(p=>String(p.category).toLowerCase()==catKey);
+async function load(){
+  const res = await fetch(BASE+"/veri/urunler.json?"+Date.now());
+  const data = await res.json();
 
-  grid.innerHTML=list.map(p=>`
+  const list = data.filter(x => x.category === cat);
+
+  document.getElementById("grid").innerHTML =
+  list.map(p=>`
     <div class="card">
-      <img class="img" src="${fixImg(p.img)}">
-      <div>${p.title}</div>
+      <img class="img" src="${imgFix(p.img)}">
+      <b>${p.title}</b>
       <div>₺ ${p.price}</div>
       <button class="btn">Ürünü Gör</button>
     </div>
   `).join("");
 }
 
-render();
+load();
 </script>
+
 </body>
 </html>
