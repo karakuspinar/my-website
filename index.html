@@ -240,7 +240,7 @@ function renderCategories(){
   const grid = document.getElementById("grid");
   grid.innerHTML = categories.map(c => `
     <div class="card" data-name="${c.key}">
-      <img class="img" src="images/${c.img}" alt="${c.title}">
+    <img class="img" src="resimler/${c.img}" alt="${c.title}">
       <div class="info">
         <div class="title">${c.title}</div>
         <div class="meta">Orijinal ürün</div>
@@ -282,4 +282,5 @@ render();
 <script src="js/car-ui.js"></script>
 <script src="js/auth.js"></script>
 </body>
+
 </html>
