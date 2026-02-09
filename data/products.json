@@ -1,65 +1,20 @@
 [
   {
-    "title": "Audi A3 Hb 2003-2013 Cam Rüzgarlığı",
-    "category": "cam",
-    "img": "cam.jpg",
+    "title": "Audi A3 Cam Rüzgarlığı",
     "price": 600,
-    "brand": "Audi",
-    "model": "A3",
-    "year": "2003-2013"
+    "img": "https://static.ticimax.cloud/12345/uploads/urunresimleri/audi-cam.jpg",
+    "category": "cam"
   },
   {
-    "title": "Bmw E36 Cam Rüzgarlığı",
-    "category": "cam",
-    "img": "cam.jpg",
+    "title": "BMW Difüzör",
     "price": 450,
-    "brand": "BMW",
-    "model": "E36",
-    "year": "1990-2000"
+    "img": "https://static.ticimax.cloud/12345/uploads/urunresimleri/difuzor.jpg",
+    "category": "difuzor"
   },
   {
-    "title": "Chevrolet Aveo Cam Rüzgarlığı",
-    "category": "cam",
-    "img": "cam.jpg",
-    "price": 600,
-    "brand": "Chevrolet",
-    "model": "Aveo",
-    "year": "2012"
-  },
-  {
-    "title": "Kolçak Üniversal",
-    "category": "kolcak",
-    "img": "kolcak.jpg",
-    "price": 350,
-    "brand": "Genel",
-    "model": "",
-    "year": ""
-  },
-  {
-    "title": "Krom Kapı Kolu",
-    "category": "krom",
-    "img": "krom.jpg",
-    "price": 250,
-    "brand": "Genel",
-    "model": "",
-    "year": ""
-  },
-  {
-    "title": "Paspas Seti",
-    "category": "paspas",
-    "img": "paspas.jpg",
-    "price": 300,
-    "brand": "Genel",
-    "model": "",
-    "year": ""
-  },
-  {
-    "title": "Tavan Çıtası",
-    "category": "tavan",
-    "img": "tavan.jpg",
-    "price": 400,
-    "brand": "Genel",
-    "model": "",
-    "year": ""
+    "title": "Koltuk Kılıfı",
+    "price": 500,
+    "img": "https://static.ticimax.cloud/12345/uploads/urunresimleri/koltuk.jpg",
+    "category": "koltuk"
   }
 ]
