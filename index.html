@@ -6,41 +6,94 @@
 <title>Pınar Oto Aksesuar</title>
 
 <style>
-body{font-family:Arial;margin:0;background:#fff1f6}
-.wrap{max-width:1100px;margin:auto;padding:20px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+body{margin:0;font-family:Arial;background:#fff1f6}
+.topbar{background:#ff2e88;color:#fff;padding:8px;text-align:center}
+.header{background:#fff;padding:20px;border-bottom:1px solid #eee}
+.wrap{max-width:1100px;margin:auto}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
 .card{background:#fff;border-radius:14px;padding:10px;border:1px solid #eee}
 .img{width:100%;height:180px;object-fit:cover}
-.btn{background:#ff2e88;color:#fff;border:none;padding:10px;width:100%;border-radius:10px}
+.btn{width:100%;padding:10px;background:#ff2e88;color:#fff;border:none;border-radius:10px;margin-top:8px}
+.filters{display:flex;gap:10px;margin-top:10px}
+select,input{padding:10px;border-radius:8px;border:1px solid #ddd;width:100%}
+.search{display:flex;gap:10px;margin-top:10px}
+@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}}
 </style>
 </head>
 
 <body>
+
+<div class="topbar">
+Pınar Oto Aksesuar • Orijinal Ürün • Ücretsiz Kargo • Satış Sonrası Destek
+</div>
+
+<div class="header">
 <div class="wrap">
 <h2>Pınar Oto Aksesuar</h2>
-<div id="grid" class="grid"></div>
+
+<div class="filters">
+<select><option>Ford</option></select>
+<select><option>Model</option></select>
+<select><option>Model Yılı / Kasa</option></select>
+<button class="btn">Uygula</button>
+<button class="btn" style="background:#ccc;color:#000">Sıfırla</button>
+</div>
+
+<div class="search">
+<input placeholder="Kategori ara (ör: cam, jant)">
+<button class="btn">Ara</button>
+</div>
+
+</div>
+</div>
+
+<div class="wrap">
+<div class="grid">
+
+<div class="card">
+<img class="img" src="images/cam.jpg">
+<h3>Cam Rüzgarlığı</h3>
+<button class="btn" onclick="go('cam')">Kategoriye Git</button>
+</div>
+
+<div class="card">
+<img class="img" src="images/difuzor.jpg">
+<h3>Difüzör</h3>
+<button class="btn" onclick="go('difuzor')">Kategoriye Git</button>
+</div>
+
+<div class="card">
+<img class="img" src="images/kolcak.jpg">
+<h3>Kolçak</h3>
+<button class="btn" onclick="go('kolcak')">Kategoriye Git</button>
+</div>
+
+<div class="card">
+<img class="img" src="images/paspas.jpg">
+<h3>Paspas</h3>
+<button class="btn" onclick="go('paspas')">Kategoriye Git</button>
+</div>
+
+<div class="card">
+<img class="img" src="images/krom.jpg">
+<h3>Krom</h3>
+<button class="btn" onclick="go('krom')">Kategoriye Git</button>
+</div>
+
+<div class="card">
+<img class="img" src="images/jant.jpg">
+<h3>Jant</h3>
+<button class="btn" onclick="go('jant')">Kategoriye Git</button>
+</div>
+
+</div>
 </div>
 
 <script>
-const categories = [
-{title:"Cam Rüzgarlığı", key:"cam", img:"cam.jpg"},
-{title:"Difüzör", key:"difuzor", img:"difuzor.jpg"},
-{title:"Kolçak", key:"kolcak", img:"kolcak.jpg"},
-];
-
-const grid=document.getElementById("grid");
-
-grid.innerHTML = categories.map(c=>`
-<div class="card">
-<img class="img" src="images/${c.img}">
-<h3>${c.title}</h3>
-<button class="btn" onclick="git('${c.key}')">Kategoriye Git</button>
-</div>
-`).join("");
-
-function git(k){
-location.href="category.html?cat="+k;
+function go(k){
+ location.href="category.html?cat="+k;
 }
 </script>
+
 </body>
 </html>
