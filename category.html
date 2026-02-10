@@ -21,42 +21,33 @@ body{font-family:Arial;margin:0;background:#fff1f6}
 </div>
 
 <script>
-const params = new URLSearchParams(location.search);
-const key = params.get("category");
-
-// KEY → GERÇEK AD
-const map = {
+const map={
 cam:"Cam Rüzgarlığı",
 difuzor:"Difüzör",
-kolcak:"Kolçak",
-krom:"Krom Ürünler",
-kaput:"Ön Kaput",
-paspas:"Paspas"
+kolcak:"Kolçak"
 };
 
-const kategoriAdi = map[key] || key;
-document.getElementById("title").textContent = kategoriAdi;
+const p=new URLSearchParams(location.search);
+const key=p.get("cat");
+
+const ad=map[key];
+document.getElementById("title").textContent=ad;
 
 fetch("products.json")
 .then(r=>r.json())
-.then(products=>{
+.then(data=>{
 
-const list = products.filter(p=>p.kategori===kategoriAdi);
+const list=data.filter(x=>x.kategori===ad);
 
-const grid=document.getElementById("grid");
-
-grid.innerHTML = list.map(p=>`
+document.getElementById("grid").innerHTML=list.map(x=>`
 <div class="card">
-<a href="urun.html?id=${p.id}">
-<img class="img" src="images/${p.resim}">
-<h3>${p.ad}</h3>
-<p>${p.fiyat} TL</p>
-</a>
+<img class="img" src="images/${x.resim}">
+<h3>${x.ad}</h3>
+<p>${x.fiyat} TL</p>
 </div>
 `).join("");
 
 });
 </script>
-
 </body>
 </html>
