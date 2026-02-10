@@ -20,9 +20,10 @@ const CATEGORIES = PRODUCTS;
 
 
 // 🔥 JSON TEST
-fetch("../products.json")
+fetch("./products.json")
   .then(res => res.json())
   .then(data => {
     console.log("JSON GELDI:", data);
   })
+
   .catch(err => console.log("JSON HATA:", err));
