@@ -21,31 +21,33 @@ body{font-family:Arial;margin:0;background:#fff1f6}
 </div>
 
 <script>
-const p = new URLSearchParams(location.search);
-const key = p.get("category");
+const params = new URLSearchParams(location.search);
+const key = params.get("category");
 
-const map = {
+const kategoriMap = {
 cam:"Cam Rüzgarlığı",
 difuzor:"Difüzör",
 kolcak:"Kolçak"
 };
 
-const kategoriAdi = map[key];
+const kategoriAdi = kategoriMap[key];
+
 document.getElementById("title").textContent = kategoriAdi;
 
 fetch("products.json")
-.then(r=>r.json())
-.then(data=>{
+.then(res=>res.json())
+.then(products=>{
 
-const list = data.filter(x=>x.kategori === kategoriAdi);
+const filtre = products.filter(p => p.kategori === kategoriAdi);
 
-document.getElementById("grid").innerHTML =
-list.map(x=>`
+const grid = document.getElementById("grid");
+
+grid.innerHTML = filtre.map(p => `
 <div class="card">
-<a href="urun.html?id=${x.id}">
-<img class="img" src="images/${x.resim}">
-<h3>${x.ad}</h3>
-<p>${x.fiyat} TL</p>
+<a href="urun.html?id=${p.id}">
+<img class="img" src="images/${p.resim}">
+<h3>${p.ad}</h3>
+<p>${p.fiyat} TL</p>
 </a>
 </div>
 `).join("");
