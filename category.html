@@ -11,49 +11,65 @@ body{font-family:Arial;margin:0;background:#fff1f6}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .card{background:#fff;border-radius:14px;padding:10px;border:1px solid #eee}
 .img{width:100%;height:180px;object-fit:cover;background:#eee}
-.btn{width:100%;padding:10px;background:#ff2e88;color:#fff;border:none;border-radius:10px;margin-top:6px}
 </style>
 </head>
 
 <body>
 <div class="wrap">
-<h2 id="title"></h2>
-<div id="grid" class="grid"></div>
+  <h2 id="title"></h2>
+  <div id="grid" class="grid"></div>
 </div>
 
 <script>
+// URL'den gelen key: cam, difuzor, kolcak...
 const params = new URLSearchParams(location.search);
-const catKey = (params.get("category")||"").toLowerCase();
-document.getElementById("title").textContent = catKey;
+const key = (params.get("category") || "").toLowerCase();
 
-function fixImg(v){
-  if(!v) return "images/cam.jpg";
-  if(v.startsWith("http")) return v;
-  return "images/" + v.replace("images/","").replace("resimler/","");
-}
+// key → gerçek kategori adı
+const map = {
+  cam:"Cam Rüzgarlığı",
+  difuzor:"Difüzör",
+  kolcak:"Kolçak",
+  krom:"Krom Ürünler",
+  kaput:"Ön Kaput",
+  paspas:"Paspas",
+  koltuk:"Koltuk Kılıfı",
+  marspiyel:"Marşpiyel",
+  tavan:"Tavan",
+  ayna:"Ayna",
+  jant:"Jant",
+  tozluk:"Tozluk",
+  telefon:"Telefon Tutucu"
+};
 
-async function getProducts(){
-  const res = await fetch("products_with_images_only.json");
-  return await res.json();
-}
+const kategoriAdi = map[key] || key;
+document.getElementById("title").textContent = kategoriAdi;
 
-async function render(){
+fetch("products.json")
+.then(r=>r.json())
+.then(products=>{
   const grid=document.getElementById("grid");
-  const products=await getProducts();
 
-  const list=products.filter(p=>String(p.category).toLowerCase()==catKey);
+  const list = products.filter(p =>
+    String(p.kategori || "").toLowerCase() === kategoriAdi.toLowerCase()
+  );
 
-  grid.innerHTML=list.map(p=>`
+  if(!list.length){
+    grid.innerHTML = "<p>Bu kategoride ürün bulunamadı.</p>";
+    return;
+  }
+
+  grid.innerHTML = list.map(p=>`
     <div class="card">
-      <img class="img" src="${fixImg(p.img)}">
-      <div>${p.title}</div>
-      <div>₺ ${p.price}</div>
-      <button class="btn">Ürünü Gör</button>
+      <a href="urun.html?id=${p.id}">
+        <img class="img" src="images/${p.resim}">
+        <h3>${p.ad}</h3>
+        <p>${p.fiyat} TL</p>
+      </a>
     </div>
   `).join("");
-}
-
-render();
+});
 </script>
+
 </body>
 </html>
